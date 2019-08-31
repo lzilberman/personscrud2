@@ -1,0 +1,60 @@
+/*
+public abstract class Person {
+	
+	@Id
+	int id;
+	String name;
+	@JsonFormat(pattern="yyyy-MM-dd") 
+	LocalDate birthdate;
+
+		<dependency>
+		    <groupId>com.fasterxml.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>2.9.6</version>
+		</dependency>
+*/
+ADD: http://localhost:8080/person
+=================================
+{
+    "@class":"telran.person.domain.Employee",
+    "id": "124",
+    "company": "Motorola",
+    "salary": "20000",
+    "name": "Mosche",
+    "birthdate": "2000-08-21",
+    "address": {
+        "city": "Holon",
+        "street": "Sokolov",
+        "building": "17"
+    }
+}
+
+{
+    "@class":"telran.person.domain.Child",
+    "id": "123",
+    "kindergarden": "Smile",
+    "name": "Yosef",
+    "birthdate": "2015-08-21",
+    "address": {
+        "city": "Lod",
+        "street": "Herzel",
+        "building": "10"
+    }
+ }
+ 
+ {
+    "@class":"telran.person.domain.Employee",
+    "id": 125,
+    "company": "IBM",
+    "salary": 20000,
+    "name": "Olya",
+    "birthdate": "2003-05-10",
+    "address": {
+        "city": "Rehovot",
+        "street": "Plaut",
+        "building": 10
+    }
+}
+
+ GET: http://localhost:8080/person/123 [124 ...
+=================================
