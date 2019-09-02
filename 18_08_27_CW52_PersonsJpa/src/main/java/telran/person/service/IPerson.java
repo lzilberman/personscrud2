@@ -2,10 +2,12 @@ package telran.person.service;
 
 import telran.person.domain.Person;
 import telran.person.dto.AddressDto;
+import telran.person.dto.RandomDataDto;
 
 public interface IPerson {
 	
-	void addPerson(Person person);
+//	void addPerson(Person person);
+	boolean addPerson(Person person);
 	
 	void addPersons(Iterable<Person> persons);
 	
@@ -22,4 +24,6 @@ public interface IPerson {
 	Iterable<Person> getPersonByCity(String city);
 	
 	Iterable<Person> getEmployeeBySalary(int fromSalary, int toSalary);
+
+	void addRandomPersons(RandomDataDto randomData);
 }

@@ -1,15 +1,13 @@
 package telran.person.service;
 
+import java.util.List;
 import java.time.LocalDate;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import telran.person.dao.PersonRepository;
-import telran.person.domain.Address;
-import telran.person.domain.Person;
-import telran.person.dto.AddressDto;
+import telran.person.domain.*;
+import telran.person.dto.*;
 
 @Service
 public class PersonSevice implements IPerson {
@@ -17,9 +15,15 @@ public class PersonSevice implements IPerson {
 	PersonRepository personRepository;
 
 	@Override
-	public void addPerson(Person person) {
-		personRepository.save(person);
-
+	public void addRandomPersons(RandomDataDto randomData) {
+		List<Person> persons = RandomPerson.getRandomPersons(randomData);
+		addPersons(persons);
+	}
+	
+	@Override
+	public boolean addPerson(Person person) {
+		Person saved = personRepository.save(person);
+		return saved != null;
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import telran.person.domain.Person;
 import telran.person.dto.AddressDto;
+import telran.person.dto.RandomDataDto;
 import telran.person.service.IPerson;
 
 @RestController
@@ -18,10 +19,17 @@ public class PersonController {
 	@Autowired
 	IPerson personService;
 	
-	@PostMapping("/person")
-	public void addPerson(@RequestBody Person person) {
-		personService.addPerson(person);
+	@PostMapping("/persons/random")
+	public void addRandomPersons(@RequestBody RandomDataDto randomData) {
+		personService.addRandomPersons(randomData);
 	}
+	
+	@PostMapping("/person")
+//	public void addPerson(@RequestBody Person person) {
+	public boolean addPerson(@RequestBody Person person) {	
+		return personService.addPerson(person);
+	}
+	
 	@GetMapping("/person/{id}")
 	public Person getPerson(@PathVariable int id) {
 		return personService.getPerson(id);
@@ -45,6 +53,10 @@ public class PersonController {
 	@GetMapping("/persons/city/{city}")
 	public Iterable<Person> getPersonByCity(@PathVariable String city){
 		return personService.getPersonByCity(city);
+	}
+	@GetMapping("/persons")
+	public Iterable<Person> getPersons(){
+		return personService.getAllPersons();
 	}
 	
 
